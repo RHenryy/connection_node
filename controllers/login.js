@@ -25,14 +25,14 @@ export async function login(req, res) {
         res.redirect("/dashboard");
       } else {
         req.session.flashMessages.push({
-          message: "Login failed",
+          message: "Invalid credentials",
           type: "error",
         });
         res.redirect("/login");
       }
     } else {
       req.session.flashMessages.push({
-        message: "Login failed",
+        message: "User not found",
         type: "error",
       });
       res.redirect("/login");

@@ -7,7 +7,6 @@ export function registerPage(req, res) {
 }
 export async function register(req, res) {
   // Traitement des erreurs
-
   let checkLength = req.body.password.length >= 8;
   let checkPasswords = req.body.password === req.body.password_confirm;
   const checkUser = await UserModel.findOne({
@@ -31,7 +30,6 @@ export async function register(req, res) {
       type: "error",
     });
   }
-
   //
   const salt = await bcrypt.genSalt(saltRounds);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
