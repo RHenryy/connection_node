@@ -1,3 +1,4 @@
+// ANCIENNE VERSION
 // export default function dashboard(req, res) {
 //   if (res.locals.user) {
 //     res.render("dashboard");
