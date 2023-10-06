@@ -47,6 +47,7 @@ app.use((req, res, next) => {
   delete req.session.flashMessageType;
   next();
 });
+
 // ==========
 // App routers
 // ==========

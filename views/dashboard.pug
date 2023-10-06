@@ -8,12 +8,13 @@ block head
 block content
   .ui.middle.aligned.center.aligned.grid
     .sixteen.wide.ten.wide.tablet.seven.wide.computer.column
-        if flashMessages 
-        each flashMessage in flashMessages
-            +message(flashMessage.type) #{flashMessage.message}
         if user 
             h1 Welcome #{user.firstName} #{user.lastName}
             h3 Update your info here.
+        if flashMessages 
+        each flashMessage in flashMessages
+            +message(flashMessage.type) #{flashMessage.message}
+
         form.ui.large.form(method="post" action="/userRole")
             .ui.segment
                 +field('text', 'firstName', 'First name', user.firstName)
