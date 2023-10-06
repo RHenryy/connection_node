@@ -3,6 +3,7 @@ import HomeController from "../controllers/home.js";
 import { loginPage, login } from "../controllers/login.js";
 import { registerPage, register } from "../controllers/register.js";
 import disconnectController from "../controllers/disconnect.js";
+import dashboardController from "../controllers/dashboard.js";
 
 const appRouter = Router();
 
@@ -16,4 +17,6 @@ appRouter.get("/register", registerPage);
 appRouter.post("/register", register);
 //DC
 appRouter.get("/logout", disconnectController);
+//dashboard
+appRouter.get("/dashboard", dashboardController);
 export default appRouter;

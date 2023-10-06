@@ -17,16 +17,24 @@ export async function login(req, res) {
         findUser.password
       );
       if (isPasswordMatch) {
-        req.session.flashMessage = "Login successful!";
-        req.session.flashMessageType = "success";
+        req.session.flashMessages.push({
+          message: "Login successful",
+          type: "success",
+        });
         req.session.user = findUser;
-        res.redirect("/");
+        res.redirect("/dashboard");
       } else {
-        req.session.flashMessage = "Login failed!";
-        req.session.flashMessageType = "danger";
+        req.session.flashMessages.push({
+          message: "Login failed",
+          type: "error",
+        });
         res.redirect("/login");
       }
     } else {
+      req.session.flashMessages.push({
+        message: "Login failed",
+        type: "error",
+      });
       res.redirect("/login");
     }
   } catch (err) {

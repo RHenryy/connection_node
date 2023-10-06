@@ -46,7 +46,7 @@ export async function register(req, res) {
         password: hashedPassword,
       });
       await user.save();
-      res.redirect("/");
+      res.redirect("/login");
     }
   } catch (err) {
     res.status(500).send(err.message);

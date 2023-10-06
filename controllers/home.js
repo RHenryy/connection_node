@@ -1,3 +1,4 @@
 export default function home(req, res) {
-  res.render("home");
+  const query = req.query.disconnect;
+  res.render("home", { query: query });
 }

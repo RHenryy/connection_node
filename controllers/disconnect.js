@@ -4,7 +4,7 @@ export default function destroySession(req, res) {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.redirect("/");
+      res.redirect("/?disconnect=true");
     }
   });
 }

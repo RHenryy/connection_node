@@ -1,19 +1,19 @@
 //- Top black menu bar
 .ui.inverted.menu
   .left.menu
-    a.item(href='/')
+    a.item(href='/dashboard')
       i.home.icon
       | Dashboard
 
   .right.menu
     if !user
-    a.item(href='/register' class='active')
-      i.sign-in.icon
-      | Inscription
+      a.item(href='/register' class='active')
+        i.sign-in.icon
+        | Inscription
     if !user
-    a.item(href='/login')
-      i.sign-in.icon
-      | Connexion
+      a.item(href='/login')
+        i.sign-in.icon
+        | Connexion
     if user
       span.item
         i.user.icon

@@ -9,8 +9,10 @@ block content
   .ui.middle.aligned.center.aligned.grid
     .sixteen.wide.ten.wide.tablet.seven.wide.computer.column
       h1 Login
-      if flashMessage 
-        +message(flashMessageType) #{flashMessage}
+      if flashMessages 
+        each flashMessage in flashMessages
+            +message(flashMessage.type) #{flashMessage.message}
+
 
       form.ui.large.form(method="post" action="/login")
         .ui.segment
