@@ -13,7 +13,19 @@ block content
             +message(flashMessage.type) #{flashMessage.message}
         if user 
             h1 Welcome #{user.firstName} #{user.lastName}
-            p= user.email
+            h3 Update your info here.
+        form.ui.large.form(method="post" action="/userRole")
+            .ui.segment
+                +field('text', 'firstName', 'First name', user.firstName)
+                +field('text', 'lastName', 'Last name', user.lastName)
+                +field('email', 'email', 'your.email@address.tld', user.email)
+                label(for="role") 
+                select(name="role" id="role")
+                    option(value="0") User
+                    option(value="1") Admin
+                +fieldhidden('hidden', 'email_old', '', user.email)
+                button(type="submit").ui.fluid.large.teal.submit.button
+                    | Submit
             p
                 a(href='/logout') Logout
     

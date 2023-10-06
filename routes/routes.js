@@ -4,7 +4,7 @@ import { loginPage, login } from "../controllers/login.js";
 import { registerPage, register } from "../controllers/register.js";
 import disconnectController from "../controllers/disconnect.js";
 import dashboardController from "../controllers/dashboard.js";
-
+import userRoleController from "../controllers/userRole.js";
 const appRouter = Router();
 
 //home
@@ -19,4 +19,6 @@ appRouter.post("/register", register);
 appRouter.get("/logout", disconnectController);
 //dashboard
 appRouter.get("/dashboard", dashboardController);
+//User roles
+appRouter.post("/userRole", userRoleController);
 export default appRouter;

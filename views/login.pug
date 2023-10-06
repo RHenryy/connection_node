@@ -16,8 +16,6 @@ block content
 
       form.ui.large.form(method="post" action="/login")
         .ui.segment
-          +field('text', 'firstName', 'First name')
-          +field('text', 'lastName', 'Last name')
           +field('email', 'email', 'your.email@address.tld')
           +field('password', 'password', 'Password')
           button(type="submit").ui.fluid.large.teal.submit.button

@@ -46,6 +46,10 @@ export async function register(req, res) {
         password: hashedPassword,
       });
       await user.save();
+      req.session.flashMessages.push({
+        message: "User registered",
+        type: "success",
+      });
       res.redirect("/login");
     }
   } catch (err) {
