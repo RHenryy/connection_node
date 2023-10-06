@@ -8,9 +8,11 @@ block head
 block content
   .ui.middle.aligned.center.aligned.grid
     .sixteen.wide.ten.wide.tablet.seven.wide.computer.column
-      h1 Register
+      h1 Login
+      if error 
+        +message('error') Invalid credentials
 
-      form.ui.large.form(method="post" action="/loginPost")
+      form.ui.large.form(method="post" action="/login")
         .ui.segment
           +field('text', 'firstName', 'First name')
           +field('text', 'lastName', 'Last name')

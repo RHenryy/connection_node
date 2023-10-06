@@ -1,12 +1,16 @@
 import { Router } from "express";
 import HomeController from "../controllers/home.js";
-import LoginController from "../controllers/login.js";
-import RegisterController from "../controllers/register.js";
+import { loginPage, login } from "../controllers/login.js";
+import { registerPage, register } from "../controllers/register.js";
 
 const appRouter = Router();
 
+//home
 appRouter.get("/", HomeController);
-appRouter.get("/login", LoginController);
-appRouter.post("/registerPost", RegisterController);
-appRouter.post("/registerPost", RegisterController);
+//login
+appRouter.get("/login", loginPage);
+appRouter.post("/login", login);
+//register
+appRouter.get("/register", registerPage);
+appRouter.post("/register", register);
 export default appRouter;

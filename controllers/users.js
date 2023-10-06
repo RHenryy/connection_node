@@ -17,7 +17,7 @@ export default async function addUser(req, res) {
             email: req.body.email,
             password: bcrypt.genSalt(saltRounds, function(err, salt) {
                 bcrypt.hash(req.body.password, salt, function(err, hash) {
-                    // Store hash in your password DB.
+            
                 });
             })
         });

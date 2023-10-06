@@ -4,13 +4,20 @@ import path from "path";
 import { fileURLToPath } from "url";
 import mongoose from "mongoose";
 import route from "./routes/routes.js";
+import session from "express-session";
 // ==========
 // App initialization
 // ==========
 
 dotenv.config();
-const { APP_HOSTNAME, APP_PORT, NODE_ENV, MONGO_URI, MONGO_DB_NAME } =
-  process.env;
+const {
+  APP_HOSTNAME,
+  APP_PORT,
+  NODE_ENV,
+  MONGO_URI,
+  MONGO_DB_NAME,
+  SECRET_KEY,
+} = process.env;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
@@ -24,6 +31,13 @@ app.locals.pretty = NODE_ENV !== "production"; // Indente correctement le HTML e
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 // ==========
 // App routers
 // ==========

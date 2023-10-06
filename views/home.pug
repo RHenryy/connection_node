@@ -8,14 +8,8 @@ block head
 block content
   .ui.middle.aligned.center.aligned.grid
     .sixteen.wide.ten.wide.tablet.seven.wide.computer.column
-      h1 Register
-
-      form.ui.large.form(method="post" action="/register")
-        .ui.segment
-          +field('text', 'firstName', 'First name')
-          +field('text', 'lastName', 'Last name')
-          +field('email', 'email', 'your.email@address.tld')
-          +field('password', 'password', 'Password')
-          +field('password', 'password_confirm', 'Confirm password')
-          button(type="submit").ui.fluid.large.teal.submit.button
-            | Login
+      h1 Vous devez vous connecter pour avoir accès au site.
+      p 
+        a(href='/login') Connexion
+      p 
+        a(href='/register') Inscription
