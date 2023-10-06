@@ -21,8 +21,8 @@ block content
                 +field('email', 'email', 'your.email@address.tld', user.email)
                 label(for="role") 
                 select(name="role" id="role")
-                    option(value="0") User
-                    option(value="1") Admin
+                    option(value="0", selected=user.role === 0) User
+                    option(value="1", selected=user.role === 1) Admin
                 +fieldhidden('hidden', 'email_old', '', user.email)
                 button(type="submit").ui.fluid.large.teal.submit.button
                     | Submit
