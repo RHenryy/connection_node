@@ -9,8 +9,8 @@ block content
   .ui.middle.aligned.center.aligned.grid
     .sixteen.wide.ten.wide.tablet.seven.wide.computer.column
       h1 Login
-      if error 
-        +message('error') Invalid credentials
+      if flashMessage 
+        +message(flashMessageType) #{flashMessage}
 
       form.ui.large.form(method="post" action="/login")
         .ui.segment

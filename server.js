@@ -21,16 +21,6 @@ const {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
-
-app.set("view engine", "pug");
-app.locals.pretty = NODE_ENV !== "production"; // Indente correctement le HTML envoyé au client (utile en dev, mais inutile en production)
-
-// ==========
-// App middlewares
-// ==========
-
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: SECRET_KEY,
@@ -38,6 +28,25 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.set("view engine", "pug");
+app.locals.pretty = NODE_ENV !== "production"; // Indente correctement le HTML envoyé au client (utile en dev, mais inutile en production)
+
+// ==========
+// App middlewares
+// ==========
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.locals.user = req.session.user; // Assuming you store user data in req.session.user
+  req.session.flashMessages = req.session.flashMessages || [];
+  res.locals.flashMessages = req.session.flashMessages;
+  // Clear flash messages from the session
+  req.session.flashMessages = [];
+  delete req.session.flashMessage;
+  delete req.session.flashMessageType;
+  next();
+});
 // ==========
 // App routers
 // ==========

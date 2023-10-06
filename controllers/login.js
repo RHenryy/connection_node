@@ -17,12 +17,17 @@ export async function login(req, res) {
         findUser.password
       );
       if (isPasswordMatch) {
+        req.session.flashMessage = "Login successful!";
+        req.session.flashMessageType = "success";
+        req.session.user = findUser;
         res.redirect("/");
       } else {
-        res.redirect("/login?error=invalid");
+        req.session.flashMessage = "Login failed!";
+        req.session.flashMessageType = "danger";
+        res.redirect("/login");
       }
     } else {
-      res.redirect("/login?error=invalid");
+      res.redirect("/login");
     }
   } catch (err) {
     res.status(500).send(err.message);

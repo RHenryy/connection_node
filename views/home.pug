@@ -8,8 +8,13 @@ block head
 block content
   .ui.middle.aligned.center.aligned.grid
     .sixteen.wide.ten.wide.tablet.seven.wide.computer.column
-      h1 Vous devez vous connecter pour avoir accès au site.
-      p 
-        a(href='/login') Connexion
-      p 
-        a(href='/register') Inscription
+      if flashMessage 
+        +message(flashMessageType) #{flashMessage}
+      if user
+        h1 Bienvenue #{user.firstName} #{user.lastName} !
+      else
+        h1 Vous devez vous connecter pour avoir accès au site.
+        p 
+          a(href='/login') Connexion
+        p 
+          a(href='/register') Inscription

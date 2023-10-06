@@ -8,8 +8,10 @@ block head
 block content
   .ui.middle.aligned.center.aligned.grid
     .sixteen.wide.ten.wide.tablet.seven.wide.computer.column
-      h1 Register
-
+      h1 Register 
+      if flashMessages 
+        each flashMessage in flashMessages
+            +message(flashMessage.type) #{flashMessage.message}
       form.ui.large.form(method="post" action="/register")
         .ui.segment
           +field('text', 'firstName', 'First name')
